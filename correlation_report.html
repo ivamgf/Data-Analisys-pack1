@@ -1,0 +1,83 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Correlation Report</title>
+
+<style>
+
+body{
+
+    font-family:Arial;
+    margin:40px;
+
+}
+
+table{
+
+    border-collapse:collapse;
+    width:80%;
+
+}
+
+th,td{
+
+    border:1px solid #999;
+    padding:8px;
+    text-align:center;
+
+}
+
+th{
+
+    background:#dddddd;
+
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Correlation Analysis</h1><h2>Variables</h2><ul><li>Magnitude</li><li>Total Deaths</li><li>Total Affected</li><li>Total Damage ('000 US$)</li></ul><h2>Correlation Matrix</h2><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Magnitude</th>
+      <th>Total Deaths</th>
+      <th>Total Affected</th>
+      <th>Total Damage ('000 US$)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Magnitude</th>
+      <td>1.000</td>
+      <td>0.206</td>
+      <td>0.145</td>
+      <td>0.179</td>
+    </tr>
+    <tr>
+      <th>Total Deaths</th>
+      <td>0.206</td>
+      <td>1.000</td>
+      <td>0.267</td>
+      <td>0.150</td>
+    </tr>
+    <tr>
+      <th>Total Affected</th>
+      <td>0.145</td>
+      <td>0.267</td>
+      <td>1.000</td>
+      <td>0.325</td>
+    </tr>
+    <tr>
+      <th>Total Damage ('000 US$)</th>
+      <td>0.179</td>
+      <td>0.150</td>
+      <td>0.325</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table><h2>Correlation Heatmap</h2><img src="correlation_heatmap.png" width="700"><h2>Scatter Matrix</h2><img src="scatter_matrix.png" width="900"></body></html>
