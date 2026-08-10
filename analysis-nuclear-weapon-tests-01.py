@@ -36,8 +36,7 @@ HTML_PATH = os.path.join(
 
 def read_csv_robust(path):
     """
-    Reads the CSV trying common encodings and automatically
-    detects comma/semicolon separators.
+    Reads the CSV trying common encodings.
     """
 
     encodings = [
@@ -60,18 +59,6 @@ def read_csv_robust(path):
                 engine="python",
                 encoding=encoding
             )
-
-            # Some versions of the dataset use semicolon as separator.
-            # If pandas still read the entire header as one column, retry
-            # explicitly with ';'.
-            if len(data.columns) == 1 and ";" in str(data.columns[0]):
-
-                data = pd.read_csv(
-                    path,
-                    header=0,
-                    sep=";",
-                    encoding=encoding
-                )
 
             print(
                 f"Dataset loaded using encoding: {encoding}"
@@ -144,9 +131,6 @@ def find_year_column(data):
             f" - {column}"
             for column in data.columns
         )
-        + "\n\n"
-        "Possible cause: the CSV delimiter is not being recognized. "
-        "The program expects a CSV with comma or semicolon separators."
     )
 
 
@@ -612,18 +596,20 @@ def main():
     )
 
     # --------------------------------------------------------
-    # Graph: frequency by country - PIE CHART
+    # Graph: frequency by country
     # --------------------------------------------------------
 
     plt.figure(
-        figsize=(10, 8)
+        figsize=(14, 7)
     )
 
-    plt.pie(
-        frequency_by_country["Frequência de Testes"],
-        labels=frequency_by_country["País"],
-        autopct="%1.1f%%",
-        startangle=90
+    plt.plot(
+        frequency_by_country["País"],
+        frequency_by_country[
+            "Frequência de Testes"
+        ],
+        marker="o",
+        linewidth=2
     )
 
     plt.title(
@@ -632,7 +618,25 @@ def main():
         fontsize=16
     )
 
-    plt.axis("equal")
+    plt.xlabel(
+        "País",
+        fontsize=12
+    )
+
+    plt.ylabel(
+        "Número de Testes",
+        fontsize=12
+    )
+
+    plt.xticks(
+        rotation=45,
+        ha="right"
+    )
+
+    plt.grid(
+        True,
+        alpha=0.3
+    )
 
     plt.tight_layout()
 
