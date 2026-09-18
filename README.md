@@ -1,2 +1,2 @@
 # Data-Analisys-pack1
-Data-Analisys-pack1 Project
+Data-Analysis-pack1 Project
